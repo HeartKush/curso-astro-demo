@@ -1,0 +1,12 @@
+---
+interface Props {
+  icon: string | undefined;
+  attributes?: Record<string, string>;
+}
+const { icon, attributes = {} } = Astro.props;
+const { default: innerHTML } = await import(`../../src/assets/svg/${icon}.svg?raw`);
+console.log(attributes)
+---
+<Fragment>
+  <svg set:html={innerHTML} {...attributes}  />
+</Fragment>
